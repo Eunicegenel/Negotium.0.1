@@ -12,7 +12,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be able to login' do
-    post login_path, params: { user: {username:"test",password:"test"}}
+    post login_path, params: { user: { username:"test",password:"test" } }
     assert_response :redirect
   end
 
