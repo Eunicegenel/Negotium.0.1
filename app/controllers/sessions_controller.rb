@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-
       redirect_to '/authorized'
     else
-      redirect_to '/login'
+      flash[:alert] = "Invalid Username or Password"
+      render :new, notice: "Book not found"
     end
   end
 

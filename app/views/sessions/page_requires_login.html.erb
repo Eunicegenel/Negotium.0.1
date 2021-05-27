@@ -1,9 +1,11 @@
 <h1>This is where your journal entries will be, <%= current_user.username %></h1>
 <%= button_to "Logout", '/logout', method: :get %>
+<%= button_to "New Category", '/categories', method: :get %>
 
 <% @cat.each do |c| %>
   <h4><%= c.cat_name %></h4>
   <h5><%= c.cat_details %></h5>
+  <%= button_to 'Update Category', categories_change_path(:cat_id => c.id), class:"btn_details" %>
 <% end %>
 
 <% @task.each do |t| %>
@@ -11,3 +13,4 @@
   <h5><%= t.alarm.to_date %> <%= t.alarm.strftime('%H:%M') %></h5>
   <h5><%= t.task_details %></h5>
 <% end %>
+

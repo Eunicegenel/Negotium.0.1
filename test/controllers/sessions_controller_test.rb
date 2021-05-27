@@ -12,7 +12,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be able to login' do
-    post login_path, params: { user: { username:"test",password:"test" } }
+    @user = User.create(email:"test@gmail.com",username:"test",password:"test")
+    post login_path, params: { username:"test",password:"test" }
     assert_response :redirect
   end
 

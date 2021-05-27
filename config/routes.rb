@@ -9,5 +9,11 @@ Rails.application.routes.draw do
   get '/users' => 'users#new', as: 'users_new'
   post '/users' => 'users#create', as: 'users_create'
 
-  get '/categories' => 'cat#index', as: 'categories'
-end
+  get '/categories' => 'categories#new', as: 'categories_new'
+  post '/categories' => 'categories#create', as: 'categories_create'
+  
+  get '/categories/change' => 'categories#change', as: 'categories_change'
+  post '/categories/change' => 'categories#change'
+  put '/categories/change' => 'categories#update', as: 'categories_update'
+  delete '/categories/change' => 'categories#delete', as: 'categories_delate'
+end 
