@@ -33,6 +33,12 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def delete  
+    Category.find_by_id(params[:id]).delete
+    Task.find_by(cat_id:params[:id]).delete
+    redirect_to '/authorized'
+  end
+
   private 
 
   def cat_params

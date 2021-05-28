@@ -5,7 +5,14 @@
 <% @cat.each do |c| %>
   <h4><%= c.cat_name %></h4>
   <h5><%= c.cat_details %></h5>
+  <%= button_to "New Task", '/tasks', method: :get %>
   <%= button_to 'Update Category', categories_change_path(:cat_id => c.id), class:"btn_details" %>
+  <%= form_with scope: :game, method: :delete, url: categories_delete_path, local: true do |f| %>
+    <div class="delete_form" id="deleteForm">
+      <%= hidden_field_tag(:id, c.id) %>
+      <%= f.submit :"Delete Category", :class => "submit_delete", :id => "erase" %>
+    </div>  
+  <% end %>
 <% end %>
 
 <% @task.each do |t| %>
